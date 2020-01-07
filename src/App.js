@@ -1,4 +1,5 @@
 import React from 'react';
+import { Route, Switch } from 'react-router-dom'
 import "./App.css";
 import Home from './pages/Home'
 import Room from './pages/Room'
@@ -7,11 +8,13 @@ import Error from './pages/Error'
 
 export default function App() {
     return (
-        <div>
-            <Home></Home>
-            <Room></Room>
-            <SingleRoom></SingleRoom>
-            <Error></Error>
-        </div>
+        <>
+            <Switch>
+                <Route exact path="/" component={Home}/>
+                <Route exact path="/rooms/" component={Room}/>
+                <Route exact path="/rooms/:slug" component={SingleRoom}/>
+                <Route component={Error} />
+            </Switch>
+        </>
     )
 }
